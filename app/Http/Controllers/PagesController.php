@@ -6,26 +6,24 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    $title = (object) [
-        "index" => "Welcome to my blog",
-        "about" => "About",
-        "service" => "Service"
-    ];
-
-    // echo json_encode($obj);
-
     public function index() {
+        $title = 'Welcome to my blog';
         // return resources/views/pages/index.blade.php
-        return view('pages.index')->with('title', $title->index); 
+        return view('pages.index')->with('title', $title); 
     }
 
     public function about() {
+        $title = 'About';
         // return resources/views/pages/about.blade.php
-        return view('pages.about'); 
+        return view('pages.about')->with('title', $title); 
     }
 
     public function services() {
+        $data = array(
+            'title' => 'Services',
+            'services' => ['Web Design', 'Programming', 'SEO']
+        );
         // return resources/views/pages/about.blade.php
-        return view('pages.services'); 
+        return view('pages.services')->with($data); 
     }
 }
